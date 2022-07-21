@@ -21,7 +21,7 @@ const Navbar = () => {
     console.log(state)
     return (
         <div>
-            <VStack position="fixed" top="0px" w="100%" zIndex="67" bg="white">
+            <VStack position="fixed" top="0px" w="100%" zIndex="67" bg="white"  h="100px">
                 <HStack  p="10px" spacing="200px" w="100%" bg="white">
                 <HStack  width="60%" bg="white"  >
                     {
@@ -34,7 +34,7 @@ const Navbar = () => {
                         {
                             navbardata.map((el, index) => {
                                 return (<BreadcrumbItem bg="white">
-                                    <Modalnavbar icon={icon} category={el} setstate={setstate} index={index} />
+                                    <Modalnavbar icon={icon} category={el} setstate={setstate} state={state}index={index} />
                                     {
                                         index !== 2 && <ChevronRightIcon color='gray.500' ref={icon} />
                                     }

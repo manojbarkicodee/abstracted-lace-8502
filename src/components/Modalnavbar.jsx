@@ -20,7 +20,7 @@ import {
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
-const Modalnavbar = ({ category, icon, index,setstate }) => {
+const Modalnavbar = ({ category, icon, index,setstate,state }) => {
   const { isOpen, onOpen, onClose,onToggle } = useDisclosure()
   // const [scrollBehavior, setScrollBehavior] = React.useState('inside')
   const btnRef = React.useRef(null)
@@ -36,7 +36,7 @@ const Modalnavbar = ({ category, icon, index,setstate }) => {
         index !== 2 &&   onOpen()
        
 
-setstate(true)
+        index !== 2 && setstate(true)
         icon.current.style.transform = "rotate(90deg)"
         console.log(category)
       }} as={Link} to="#">{category.tagline}</BreadcrumbLink>
@@ -49,14 +49,14 @@ setstate(true)
         placement="left"
       >
 
-        <DrawerOverlay top="18%" p="0px"  >
+        <DrawerOverlay top="16%" p="0px"  >
 
 
 <Stack>
           <DrawerContent  mt="7.5%"  minW="50%" borderRadius="none" minH="450px" >
-            <CloseButton ml="100%" onClick={() => {
+            <CloseButton ml="105%" borderRadius="50%" bg={state && "white"} onClick={() => {
               onClose()
-setstate(false)
+index!==2 && setstate(false)
               console.log("hello")
             }}></CloseButton>
             <DrawerBody top="18%" >
