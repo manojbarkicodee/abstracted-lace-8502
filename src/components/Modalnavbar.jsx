@@ -3,25 +3,23 @@ import {
   Drawer,
   DrawerOverlay,
   DrawerContent,
-  DrawerHeader,
-  DrawerFooter,
+ 
   DrawerBody,
   CloseButton,
   useDisclosure,
   // Lorem,
-  Button,
+ 
   BreadcrumbLink,
-  VStack,
-  Box,
+ 
   Heading,
   Text,
   Stack,
-  Slide
+  
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 const Modalnavbar = ({ category, icon, index, setstate, state }) => {
-  const { isOpen, onOpen, onClose, onToggle } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure()
   // const [scrollBehavior, setScrollBehavior] = React.useState('inside')
   const btnRef = React.useRef(null)
 
@@ -29,7 +27,7 @@ const Modalnavbar = ({ category, icon, index, setstate, state }) => {
   console.log(category.subcategories)
 
   return (
-    <>
+    <div key={index}>
 
 
       <BreadcrumbLink bg="white"  ref={btnRef} onClick={() => {
@@ -61,8 +59,8 @@ const Modalnavbar = ({ category, icon, index, setstate, state }) => {
               }}></CloseButton>
               <DrawerBody top="18%" >
                 {
-                  category.subcategories.map((el) => {
-                    return <Stack direction="column" mt="20px" mb="30px" justify="left">
+                  category.subcategories.map((el,i) => {
+                    return <Stack key={i} direction="column" mt="20px" mb="30px" justify="left">
                       <Heading as="h2" size='md'>{el.heading}</Heading>
                       <Text size="md">{el.text}</Text>
                     </Stack>
@@ -81,7 +79,7 @@ const Modalnavbar = ({ category, icon, index, setstate, state }) => {
         </DrawerOverlay>
       </Drawer>
       {/* </Slide> */}
-    </>
+    </div>
   )
 
 }

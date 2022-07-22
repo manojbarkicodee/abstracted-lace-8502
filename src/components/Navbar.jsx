@@ -2,24 +2,30 @@ import React, { useState } from 'react'
 import {
     Breadcrumb,
     BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbSeparator,
+   
     Button,
     HStack,
     Image,
-    Link,
+    
+    useDisclosure,
     VStack,
 } from '@chakra-ui/react'
-import { ChevronRightIcon } from "@chakra-ui/icons"
+import {Link} from "react-router-dom"
+// import { ChevronRightIcon } from "@chakra-ui/icons"
 // import Modal from './Modalnavbar'
-import { Navabardata, navbardata } from "../displaydata/Navbar"
+import { navbardata } from "../displaydata/Navbar"
 import Modalnavbar from './Modalnavbar'
 import { useRef } from 'react'
 import Navbaricon from './Navbaricon'
+import { useNavigate } from 'react-router-dom'
 const Navbar = () => {
     let [state, setstate] = useState(false)
+    let navigate=useNavigate()
     let icon = useRef(null)
-    console.log(state)
+    // console.log(state)
+    let goto=()=>{
+        navigate("/signup")
+    }
     return (
         <div>
             <VStack position="fixed" top="0px" w="100%" zIndex="67" bg="white" h="100px">
@@ -34,8 +40,8 @@ const Navbar = () => {
                             {/* <BreadcrumbItem> */}
                             {
                                 navbardata.map((el, index) => {
-                                    return (<BreadcrumbItem bg="white">
-                                        <Modalnavbar icon={icon} category={el} setstate={setstate} state={state} index={index} />
+                                    return (<BreadcrumbItem bg="white" key={index}>
+                                        <Modalnavbar icon={icon}  category={el} setstate={setstate} state={state} index={index} />
                                         {
                                             index !== 2 && <Navbaricon icon={icon}/>
                                         }
@@ -51,8 +57,10 @@ const Navbar = () => {
                     </HStack>
                     <HStack spacing="20px" width="30%">
                         <Button border="2px solid grey" fontSize="lg" bg="white">contact sales</Button>
-                        <Button bg="blue" textColor="white">sign up for free</Button>
-                        <Link >sign up</Link>
+                        <Button onClick={()=>{goto()
+                       
+                        }} bg="blue" textColor="white">sign up for free</Button>
+                        <Link to="/signin" >sign up</Link>
 
                         {/* <Link></Link> */}
                     </HStack>
