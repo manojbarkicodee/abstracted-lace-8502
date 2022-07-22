@@ -32,8 +32,8 @@ const Footer = () => {
           <Breadcrumb bg="white" spacing="10px" separator="" fontSize="16px" fontWeight="bold">
             {/* <BreadcrumbItem> */}
             {
-              navbardata.map((el, index) => {
-                return (<BreadcrumbItem bg="white">
+              navbardata.map((el, ind) => {
+                return (<BreadcrumbItem bg="white" key={ind}>
                   {/* <Modalnavbar icon={icon} category={el} setstate={setstate} state={state}index={index} /> */}
                   {
                     // index !== 2 && <ChevronRightIcon color='gray.500' ref={icon} />
@@ -50,18 +50,18 @@ const Footer = () => {
         </HStack>
         <HStack spacing="30px" fontSize="20px" >
           <i className="fa-brands fa-facebook-square"></i>
-          <i class="fa-brands fa-linkedin"></i>
-          <i class="fa-brands fa-twitter-square"></i>
-          <i class="fa-brands fa-instagram"></i>
-          <i class="fa-brands fa-youtube"></i>
+          <i className="fa-brands fa-linkedin"></i>
+          <i className="fa-brands fa-twitter-square"></i>
+          <i className="fa-brands fa-instagram"></i>
+          <i className="fa-brands fa-youtube"></i>
         </HStack>
       </HStack>
       <HStack spacing="130px" mt="70px" mb="50px">
         {
-          footerdata.map((el) => {
-            return <Box>{
+          footerdata.map((el,i) => {
+            return <Box key={i}>{
               el.map((name, index) => {
-                return <Text fontWeight={index === 0 && "semibold"} fontSize={index == 0 && "lg"} lineHeight="40px">{name}</Text>
+                return <Text key={name} fontWeight={index === 0 && "semibold"} fontSize={index == 0 && "lg"} lineHeight="40px">{name}</Text>
               })
             }</Box>
           })
