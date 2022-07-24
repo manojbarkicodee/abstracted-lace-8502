@@ -1,13 +1,15 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { Box, Button, Flex, Heading, Image, Text } from '@chakra-ui/react'
 import React, { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Homebody = () => {
   let vedio = useRef(null)
   let vedio1 = useRef(null)
   let vedio2 = useRef(null)
+  let navigate=useNavigate()
   useEffect(() => {
-    console.log(vedio.current)
+    // console.log(vedio.current)
     vedio.current.play()
     vedio1.current.play()
     vedio2.current.play()
@@ -27,7 +29,7 @@ const Homebody = () => {
               <Heading as="h6" size="lg"> powerful apps that connect your data</Heading>
               <Heading as="h6" size="lg">workflows and teams</Heading>
             </Box>
-            <Button mt="30px" w="280px" fontSize="25px" p="5px" bg="blue" textColor="white">sign up for free</Button>
+            <Button onClick={()=>navigate("/signup")} mt="30px" w="280px" fontSize="25px" p="5px" bg="blue" textColor="white">sign up for free</Button>
           </Box>
           <Box w="45%" >
             <video width="100%" height="200px" className='vedio' style={{ marginTop: "80px" }} ref={vedio} autoplay muted preload='auto' playsinline loop  >
@@ -131,7 +133,7 @@ const Homebody = () => {
         </Box>
         <Box textAlign="center">
           <Heading m="auto" as="h2" size="3xl" lineHeight="70px" pt="80px" pb="20px" w="800px">300,000+ innovative companies use Airtable every day. Join them.</Heading>
-          <Button mt="30px" w="280px" fontSize="25px" p="5px" bg="blue" textColor="white">sign up for free</Button>
+          <Button onClick={()=>navigate("/signup")} mt="30px" w="280px" fontSize="25px" p="5px" bg="blue" textColor="white">sign up for free</Button>
           <Text display="block" m="20px" fontSize="lg" fontWeight="semibold">No credit card needed</Text>
         </Box>
       </Box>

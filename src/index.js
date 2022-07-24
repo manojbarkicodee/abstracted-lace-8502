@@ -11,11 +11,13 @@ root.render(
   <React.StrictMode>
     
     <BrowserRouter>
+    <AuthContextProvider>
     <ChakraProvider>
-      <AuthContextProvider>
+     
     <App />
-    </AuthContextProvider>
+    
     </ChakraProvider>
+    </AuthContextProvider>
     </BrowserRouter>
     
 

@@ -17,7 +17,10 @@ import {
   } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { LockIcon } from '@chakra-ui/icons'
+import { useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
 const Signupmodal = () => {
+  let {onchange,oncheck}=useContext(AuthContext)
     const { isOpen, onOpen, onClose } = useDisclosure()
     useEffect(() => {
         onOpen()
@@ -44,8 +47,9 @@ const Signupmodal = () => {
             </HStack>
             <Text textAlign="left" fontSize="lg" lineHeight="40px" mt="30px" fontWeight="semibold">Email</Text>
             {/* <HStack spacing="5%"> */}
-            <Input type="email" h="43px"  outline="2px solid #f2f2f2 "  borderRadius="0px" w="99%" placeholder='name@company.com'></Input>
-            <Button  h="50px" w="100%" mt="30px" color="white" bg="#2d7ff9">Continue</Button>
+            <Input name="email" onChange={onchange} type="email" h="43px"  outline="2px solid #f2f2f2 "  borderRadius="0px" w="99%" placeholder='name@company.com'></Input>
+            <Input name="password" onChange={onchange} type="passowrd" h="43px"  outline="2px solid #f2f2f2 "  borderRadius="0px" w="99%" placeholder='password'></Input>
+            <Button onClick={oncheck} h="50px" w="100%" mt="30px" color="white" bg="#2d7ff9">Continue</Button>
             {/* </HStack> */}
 {/* <Text fontSize="sm" color="red">invalid</Text> */}
             <HStack mt="40px" mb="40px">

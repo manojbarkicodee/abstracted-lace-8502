@@ -23,8 +23,8 @@ const Modalnavbar = ({ category, icon, index, setstate, state }) => {
   // const [scrollBehavior, setScrollBehavior] = React.useState('inside')
   const btnRef = React.useRef(null)
 
-  console.log(btnRef)
-  console.log(category.subcategories)
+  // console.log(btnRef)
+  // console.log(category.subcategories)
 
   return (
     <div key={index}>
