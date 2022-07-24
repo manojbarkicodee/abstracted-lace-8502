@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Modal,
     ModalOverlay,
@@ -16,8 +16,12 @@ import {
     Box
   } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
 const Signupmodal = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    let {onchange,state,onsubmit}=useContext(AuthContext)
+    console.log(state)
     useEffect(() => {
         onOpen()
     }, [])
@@ -39,10 +43,11 @@ const Signupmodal = () => {
             <Text fontSize="4xl" fontWeight="semibold"  mb="40px">Create your free account</Text>
             <Text fontSize="lg" lineHeight="40px" fontWeight="semibold">Work email</Text>
             <HStack spacing="5%">
-            <Input type="email" h="43px"  outline="2px solid blue"  borderRadius="0px" w="60%" placeholder='name@company.com'></Input>
-            <Button w="35%" h="50px" color="#a7a7a7">Continue</Button>
+            <Input name="email" onChange={onchange} type="email" h="43px"  outline="2px solid blue"  borderRadius="0px" w="60%" placeholder='name@company.com'></Input>
+            <Input name="password" onChange={onchange} type="password" h="43px"  outline="2px solid blue"  borderRadius="0px" w="60%" placeholder='password'></Input>
+            <Button onClick={onsubmit} w="35%" h="50px" color="#a7a7a7">Continue</Button>
             </HStack>
-<Text fontSize="sm" color="red">invalid</Text>
+{/* <Text fontSize="sm" color="red">invalid</Text> */}
             <HStack mt="40px" mb="40px">
             <hr style={{width:"300px",display:"inline"}} ></hr><span>Or</span> <hr style={{width:"300px",display:"inline"}} ></hr>
 
